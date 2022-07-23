@@ -22,10 +22,12 @@
   },
   "dependencies": {
     "@nestjs/common": "^8.4.7",
+    "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^8.4.7",
     "@nestjs/mapped-types": "*",
     "@nestjs/mongoose": "^9.1.1",
     "@nestjs/platform-express": "^8.0.0",
+    "dotenv": "^16.0.1",
     "mongoose": "^6.4.2",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
