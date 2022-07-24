@@ -27,11 +27,11 @@ describe('UsersService', () => {
   });
 
   it('should answer with create user', async () => {
-    const createUserDto = new CreateUserDto(
-      'mateus',
-      'mateus@email.com',
-      'minha-senha',
-    );
+    const createUserDto = {
+      username: 'mateus',
+      email: 'mateus@email.com',
+      password: 'minha-senha',
+    };
 
     await service.create(createUserDto);
     const user = await database.findByEmail(createUserDto.email);
@@ -74,11 +74,11 @@ describe('UsersService', () => {
   });
 
   async function createUser(): Promise<UserDto> {
-    const createUserDto = new CreateUserDto(
-      'mateus',
-      'mateus@email.com',
-      'minha-senha',
-    );
+    const createUserDto = {
+      username: 'mateus',
+      email: 'mateus@email.com',
+      password: 'minha-senha',
+    };
 
     return await service.create(createUserDto);
   }
