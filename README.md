@@ -4,7 +4,7 @@
 
 Uma aplicação com sistema de cadastro de usuários com e-mail, senha e nome de usuário feito em nest e mongoose.
 
-</div>
+<br />
 
 ## :hammer: Features
 
@@ -17,6 +17,8 @@ Uma aplicação com sistema de cadastro de usuários com e-mail, senha e nome de
 :ballot_box_with_check: `PATCH /users/:id` - Atualiza os parcialmemnte os dados do usuário com id informado. Recebe username, email, password.
 
 :ballot_box_with_check: `DELETE /users/:id` - Deleta o usuário com id informado.
+
+<br />
 
 ## :woman_technologist: Tecnologias
 
