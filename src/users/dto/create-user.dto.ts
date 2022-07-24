@@ -1,7 +1,13 @@
+import { Prop } from '@nestjs/mongoose';
+import { IsEmail, IsNotEmpty } from 'class-validator';
+
 export class CreateUserDto {
-  constructor(
-    public username: string,
-    public email: string,
-    public password: string,
-  ) {}
+  @IsNotEmpty()
+  public username: string;
+
+  @IsEmail({ require: true })
+  public email: string;
+
+  @IsNotEmpty()
+  public password: string;
 }

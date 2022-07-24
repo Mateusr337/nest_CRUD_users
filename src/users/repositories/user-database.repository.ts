@@ -5,10 +5,10 @@ import { CreateUserDto } from '../dto/create-user.dto';
 import { UpdateUserDto } from '../dto/update-user.dto';
 import { UserDto } from '../dto/user.dto';
 import { User } from '../entities/user.entity';
-import { UsersRepository } from './user.repository';
+import { UserRepository } from './user.repository';
 
 @Injectable()
-export class UserDatabaseRepository implements UsersRepository {
+export class UserDatabaseRepository implements UserRepository {
   constructor(@InjectModel(User.name) private userModel: Model<UserDto>) {}
 
   async create(createUserDto: CreateUserDto): Promise<UserDto> {
@@ -17,20 +17,16 @@ export class UserDatabaseRepository implements UsersRepository {
   }
 
   async findAll(): Promise<UserDto[]> {
-    const users = await this.userModel.find();
-
-    return users.map(
-      (user) => new UserDto(user._id, user.username, user.email, user.password),
-    );
+    return await this.userModel.find();
   }
 
   async findOne(id: string): Promise<UserDto> {
     const user = await this.userModel.findById(id);
-    return new UserDto(user._id, user.username, user.email, user.password);
+    return user;
   }
 
   async update(id: string, updateUserDto: UpdateUserDto) {
-    const user = await this.userModel.findByIdAndUpdate(
+    return await this.userModel.findByIdAndUpdate(
       {
         _id: id,
       },
@@ -41,7 +37,6 @@ export class UserDatabaseRepository implements UsersRepository {
         new: true,
       },
     );
-    return new UserDto(user._id, user.username, user.email, user.password);
   }
 
   async remove(id: string): Promise<void> {

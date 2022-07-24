@@ -1,9 +1,9 @@
 import { CreateUserDto } from './../dto/create-user.dto';
 import { UserDto } from '../dto/user.dto';
-import { UsersRepository } from './user.repository';
+import { UserRepository } from './user.repository';
 import { UpdateUserDto } from '../dto/update-user.dto';
 
-export class UsersMemoryRepository implements UsersRepository {
+export class UsersMemoryRepository implements UserRepository {
   private users: UserDto[] = [];
   private lastId: number | null;
 

@@ -1,7 +1,7 @@
 import { UsersMemoryRepository } from './repositories/user-memory.repository';
 import { Test, TestingModule } from '@nestjs/testing';
 import { UsersService } from './users.service';
-import { UsersRepository } from './repositories/user.repository';
+import { UserRepository } from './repositories/user.repository';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UserDto } from './dto/user.dto';
 
@@ -13,12 +13,12 @@ describe('UsersService', () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         UsersService,
-        { provide: UsersRepository, useClass: UsersMemoryRepository },
+        { provide: UserRepository, useClass: UsersMemoryRepository },
       ],
     }).compile();
 
     service = module.get<UsersService>(UsersService);
-    database = module.get(UsersRepository);
+    database = module.get(UserRepository);
     database.resetDatabase();
   });
 
